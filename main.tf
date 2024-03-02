@@ -47,6 +47,10 @@ resource "aws_ecs_task_definition" "assignment-task" {
   cpu                      = var.container_cpu    # Specifying the CPU our container requires
   execution_role_arn       = aws_iam_role.assignment-ecsTaskExecutionRole.arn
   task_role_arn            = aws_iam_role.ecs_task_role.arn
+
+    runtime_platform {
+    cpu_architecture = "ARM64"
+  }
 }
 
 resource "aws_ecs_service" "assignment-service" {
@@ -60,7 +64,7 @@ resource "aws_ecs_service" "assignment-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.assignment-alb-tg.arn # Referencing our target group
     container_name   = "${local.env}-${local.application}"
-    container_port   = 8888 # Specifying the container port
+    container_port   = 8080 # Specifying the container port
   }
 
   network_configuration {

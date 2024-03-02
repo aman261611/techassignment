@@ -5,8 +5,8 @@ resource "aws_security_group" "assignment-alb-sg" {
 
 resource "aws_security_group_rule" "assignment-alb-allow-http" {
   type              = "ingress"
-  from_port         = 81
-  to_port           = 81
+  from_port         = 80
+  to_port           = 80
   protocol          = "TCP"
   cidr_blocks       = local.aws_ingress_cidr
   security_group_id = aws_security_group.assignment-alb-sg.id
@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "assignment-alb-egress" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
-  protocol          = "UDP"
+  protocol          = "All"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.assignment-alb-sg.id
 }
@@ -37,6 +37,6 @@ resource "aws_security_group" "assignment-alb-sg-containers" {
     to_port   = 0    # Allowing any outgoing port
     protocol  = "-1" # Allowing any outgoing protocol 
     #security_groups = [aws_security_group.assignment-alb-sg.id]
-    cidr_blocks = ["192.168.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }

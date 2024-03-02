@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "assignment-alb-tg" {
   target_type = "ip"
   vpc_id      = data.aws_vpc.vpc.id
   health_check {
-    matcher  = "404"
+    matcher  = "200"
     path     = "/"
     timeout  = 45
     interval = 60
