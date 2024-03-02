@@ -5,13 +5,13 @@ variable "aws_region" {
 variable "image_tag" {
   description = "docker image tag from the repo"
   type        = string
-  default     = "lab"
+  default     = "latest"
 }
 
 variable "repo_url" {
   description = "repository URL"
   type        = string
-  default     = "826842160223.dkr.ecr.us-east-1.amazonaws.com/tech_lab"
+  default     = "826842160223.dkr.ecr.us-east-1.amazonaws.com/technicalassignment"
 }
 
 variable "container_memory" {

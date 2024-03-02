@@ -8,6 +8,6 @@ then
 else
 
 sed -i "s|APP_PORT|'$APP_PORT'|g" /usr/src/app/app.py
+fi
 
 python3 /usr/src/app/app.py
-
